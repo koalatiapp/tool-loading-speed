@@ -1,6 +1,6 @@
 # Loading Speed tool for Koalati
 
-This is the repository for Koalati's built-in on-page Loading Speed tool. This tool uses Google Lighthouse's `performance` audit to analyze webpages and recommend changes and optimizations to help improve their loading speed.
+This is the repository for Koalati's built-in Loading Speed tool. This tool uses Google Lighthouse's `performance` audit to analyze webpages and recommend changes and optimizations to help improve their loading speed.
 
 
 ## Contributing
