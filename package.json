@@ -1,6 +1,6 @@
 {
   "name": "@koalati/tool-loading-speed",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Koalati tool that uses Google Lighthouse to check for possible page loading speed optimization.",
   "main": "tool.js",
   "scripts": {
