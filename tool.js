@@ -1,7 +1,6 @@
-'use strict';
-
 const lighthouse = require('lighthouse');
 const { URL } = require('url');
+const { priorities } = require('@koalati/result-builder');
 
 class Tool {
     constructor({ page, devices }) {
@@ -35,7 +34,11 @@ class Tool {
             };
 
             if (audit.score < 1) {
-                result.recommendations = audit.description;
+                result.recommendations = [
+                    audit.title,
+                    {},
+                    this._extractPriority(result)
+                ];
             }
 
             try {
@@ -105,6 +108,16 @@ class Tool {
 
             return a.weight > b.weight ? -1 : 1;
         });
+    }
+
+    _extractPriority(lighthouseResult) {
+        if (lighthouseResult.details.overallSavingsMs >= 300) {
+            return priorities.ISSUE;
+        } else if (lighthouseResult.details.overallSavingsMs >= 130) {
+            return priorities.ESSENTIAL;
+        }
+        
+        return priorities.OPTIMIZATION;
     }
 
     async runLighthouse() {
