@@ -35,9 +35,11 @@ class Tool {
 
             if (audit.score < 1) {
                 result.recommendations = [
-                    audit.title,
-                    {},
-                    this._extractPriority(result)
+                    [
+                        audit.title,
+                        {},
+                        this._extractPriority(result)
+                    ]
                 ];
             }
 
