@@ -38,7 +38,7 @@ class Tool {
                     [
                         audit.title,
                         {},
-                        this._extractPriority(result)
+                        this._extractPriority(audit)
                     ]
                 ];
             }
