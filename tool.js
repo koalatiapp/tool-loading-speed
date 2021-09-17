@@ -86,7 +86,7 @@ class Tool {
 				return item[column.key] + ' ms';
 
 			default:
-				return item[column.key];
+				return item[column.key] || '';
 				break;
 		}
     }
