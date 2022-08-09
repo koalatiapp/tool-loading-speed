@@ -26,10 +26,10 @@
   },
   "homepage": "https://github.com/koalatiapp/tool-loading-speed#readme",
   "devDependencies": {
-    "@koalati/dev-tool-tester": "^2.0.4"
+    "@koalati/dev-tool-tester": "^2.1.0"
   },
   "dependencies": {
     "@koalati/result-builder": "^1.4.0",
-    "lighthouse": "^8.1.0"
+    "lighthouse": "^9.6.5"
   }
 }

@@ -85,6 +85,9 @@ class Tool {
 			case 'timespanMs':
 				return item[column.key] + ' ms';
 
+            case 'node':
+                return `\`${item[column.key].snippet || ''}\` (\`${item[column.key].selector || ''}\`)`;
+
 			default:
 				return item[column.key] || '';
 				break;
@@ -135,7 +138,7 @@ class Tool {
                 try {
                     const auditData = lhr.audits[auditReference.id];
 
-                    if (!auditData || auditData.score === null || (auditReference.group || null) != 'load-opportunities') {
+                    if (!auditData || auditData.score === null || (auditData.details.type || null) != 'opportunity') {
                         continue;
                     }
 
