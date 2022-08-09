@@ -17,6 +17,10 @@ class Tool {
         return this._results;
     }
 
+    get rawData() {
+        return this._results;
+    }
+
     async cleanup() {
 
     }
@@ -90,7 +94,6 @@ class Tool {
 
 			default:
 				return item[column.key] || '';
-				break;
 		}
     }
 
@@ -132,6 +135,7 @@ class Tool {
             onlyCategories: ['performance'],
         });
         const audits = [];
+        this._rawData = {};
 
         try {
             for (const auditReference of lhr.categories.performance.auditRefs) {
@@ -147,6 +151,21 @@ class Tool {
                 } catch (err) { }
             }
         } catch (err) { }
+
+        // Extract relevant raw data
+        const relevantRawAudits = [
+            "screenshot-thumbnails",
+            "diagnostics",
+            "network-requests",
+            "network-rtt",
+            "network-server-latency",
+            "metrics",
+        ];
+
+        for (const auditName of relevantRawAudits) {
+            this._rawData[auditName] = lhr.audits[auditName] ?? null;
+        }
+        console.log(this._rawData);
 
         return audits;
     }
