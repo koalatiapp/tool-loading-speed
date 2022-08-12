@@ -57,6 +57,7 @@ class Tool {
 
                     for (const rawItem of audit.details.items) {
                         const itemRow = [];
+                        console.log(rawItem);
 
                         for (const column of audit.details.headings) {
                             itemRow.push(this.formatSingleDetail(column, rawItem));
@@ -90,6 +91,11 @@ class Tool {
 				return item[column.key] + ' ms';
 
             case 'node':
+                // If there's a URL column, it's most likely an image.
+                if ("url" in item) {
+                    return `[![](${item.url})](${item.url}) (\`${item[column.key].selector || ''}\`)`;
+                }
+
                 return `\`${item[column.key].snippet || ''}\` (\`${item[column.key].selector || ''}\`)`;
 
 			default:
