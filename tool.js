@@ -171,7 +171,6 @@ class Tool {
         for (const auditName of relevantRawAudits) {
             this._rawData[auditName] = lhr.audits[auditName] ?? null;
         }
-        console.log(this._rawData);
 
         return audits;
     }
